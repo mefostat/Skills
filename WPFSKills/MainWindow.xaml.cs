@@ -29,6 +29,7 @@ namespace WPFSKills
         private void TestConnectdb_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(ConfigurationManager.ConnectionStrings["ConnectionDefault"].ConnectionString);
+            // Комментарий 
         }
     }
 }
