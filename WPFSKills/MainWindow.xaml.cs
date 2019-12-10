@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFSKills.Models;
 
 namespace WPFSKills
 {
@@ -21,15 +22,24 @@ namespace WPFSKills
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        MobileContext db;
         public MainWindow()
         {
             InitializeComponent();
+            db = new MobileContext();
+
+
         }
 
         private void TestConnectdb_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(ConfigurationManager.ConnectionStrings["ConnectionDefault"].ConnectionString);
-            // Комментарий 
+            MainСlass main = new MainСlass();
+
+            main.Connect();
+            if(main.ErrorMessage != string.Empty)
+                MessageBox.Show(main.ErrorMessage + "   " + ConfigurationManager.ConnectionStrings["ConnectionDefault"].ConnectionString);
+            
         }
     }
 }
